@@ -8,18 +8,18 @@ O’rnatishni `ikkita usuli` mavjud biri `source code` ni clone qilib olib build
 
 Binary fayilni yuklab olish
 
-```json
-// Ubuntu
+```bash
+# Ubuntu
 curl -O https://github.com/UzStack/bug-lang/releases/download/v1.1.7/buglang-ubuntu
 ```
 
-```json
-// Mac
+```bash
+# Mac
 curl -O https://github.com/UzStack/bug-lang/releases/download/v1.1.7/buglang-macos
 ```
 
-```json
-// Windows
+```bash
+# Windows
 curl -O https://github.com/UzStack/bug-lang/releases/download/v1.1.7/buglang-windows.exe
 ```
 
@@ -31,7 +31,7 @@ foydalanish juda oddiy shunchaki binary joylashgan papkaga o’ting va .`/buglan
 
 Buglangda o’zgaruvchi yaratish uchun chunchaki `key = value` dan foydalaniladi
 
-```json
+```jsx
 name = "Samandar"
 age = 20
 .....
@@ -39,7 +39,7 @@ age = 20
 
 ### List
 
-```json
+```jsx
 // yangi list yaratish
 numbers = [20.4324, 324.423432, 10.21];
 // listda ikki dona method mavjud add va size
@@ -56,7 +56,7 @@ println(numbers[0]);
 
 ### Dict
 
-```json
+```jsx
 // dictionary yaratish
 users = [
     { "name": "Samandar", "age": 20, "id": 1 },
@@ -74,7 +74,7 @@ println(users[0]["name"]);
 
 Faqatgina for loop mavjud boshqa loop yo’q
 
-```json
+```python
 i = 0;
 for (i < users.size()) {
     user = users[i];
@@ -87,7 +87,7 @@ for (i < users.size()) {
 
 Funcsiya yaratish uchun `func` kalit so’zidan foydalaniladi
 
-```json
+```python
 func getName(){
 	return "Samandar";
 }
@@ -97,14 +97,14 @@ func getName(){
 
 Buglangda classlar ham mavjud `class` kalit so’zi yordamida yaratiladi
 
-```json
+```python
 class ClassName() {
 }
 ```
 
 `Konstructor method` class yaratilganda ishga tushadigan funcsiya `init` nomli funcsiya pythonda o’g’irladim 😁
 
-```json
+```python
 class ClassName() {
     func init() {
 	      this.name = "A";
@@ -116,7 +116,7 @@ class ClassName() {
 
 ### Nasil olish
 
-```json
+```jsx
 // Define class A
 class A() {
     func init() {
