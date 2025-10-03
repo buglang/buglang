@@ -1,109 +1,122 @@
-# BugLang Documentation
+# Bug-lang docs
 
-1. Introduction
+Assalomu Alaykum `bug-lang` haqida qisqacha malumot. Buglang `interpreter` dasturlash tili, `golangda` yozilgan. Bu tilni yaratishdan asosiy maqsad yo’q 😁 to’g’ri o’zim  o’rganish uchun yaratdim lekin sizga foydasi yo’q ko’dini ko’rib chiqsangiz foydasi tegishi mumkun
 
-BugLang is a simple, object-oriented programming language designed for ease of use and flexibility. It supports classes, inheritance, arrays, and basic control structures, making it suitable for both beginners and advanced developers. BugLang includes built-in libraries like `math` for common operations and provides a straightforward syntax for rapid development.
+# O’rnatish
 
-## Installation
+O’rnatishni `ikkita usuli` mavjud biri `source code` ni clone qilib olib build qilish yoki `release`dan kerakli binary fayilni yuklab olish. Hozir biz ikkinchi usuldan foydalanamiz
 
-*Note: Installation instructions are not yet available as BugLang is under development. To run BugLang code, you need a compatible interpreter or compiler (to be provided). Check back for updates on setup instructions.*
+Binary fayilni yuklab olish
 
-## Syntax and Features
+```json
+// Ubuntu
+curl -O https://github.com/UzStack/bug-lang/releases/download/v1.1.7/buglang-ubuntu
+```
 
-### 1. Classes and Inheritance
+```json
+// Mac
+curl -O https://github.com/UzStack/bug-lang/releases/download/v1.1.7/buglang-macos
+```
 
-BugLang supports object-oriented programming with classes and multiple inheritance. Classes are defined using the `class` keyword, and inheritance is specified by listing parent classes in parentheses.
+```json
+// Windows
+curl -O https://github.com/UzStack/bug-lang/releases/download/v1.1.7/buglang-windows.exe
+```
 
-- **Class Definition**:
+foydalanish juda oddiy shunchaki binary joylashgan papkaga o’ting va .`/buglang-<system> ./main.bug`. Masalan `./buglang-ubuntu ./main.bug`
 
-  ```buglang
-  class A() {
-      func init() {
-          this.name = "A";
-      }
-      func getName() {
-          return this.name;
-      }
-  }
-  ```
+# Foydalanish
 
-- **Inheritance**: Use `super(ClassName)` to call methods from a specific parent class.
+## O’zgaruvchilar
 
-  ```buglang
-  class C(B, A) {
-      func init() {
-          super(A).init();
-          println(this.name); // Outputs: A
-          super(B).init();
-          println(this.name); // Outputs: B
-          this.name = "C";
-      }
-  }
-  ```
+Buglangda o’zgaruvchi yaratish uchun chunchaki `key = value` dan foydalaniladi
 
-### 2. Arrays and Lists
+```json
+name = "Samandar"
+age = 20
+.....
+```
 
-BugLang supports dynamic arrays (or lists) for storing collections of data. Arrays can hold mixed types, including numbers, strings, and objects.
+### List
 
-- **Array Declaration**:
+```json
+// yangi list yaratish
+numbers = [20.4324, 324.423432, 10.21];
+// listda ikki dona method mavjud add va size
 
-  ```buglang
-  numbers = [20.4324, 324.423432, 10.21];
-  ```
+// yangi element qo'shish
+numbers.add(100);
 
-- **Array Methods**:
+// List o'lchamini olish
+numbers.size();
 
-  - `add(value)`: Appends a value to the array.
-  - `size()`: Returns the length of the array.
+// List ichidan elementni olish uchun index dan foydalanish mumkun to'rtburchak qavslar yordamida
+println(numbers[0]);
+```
 
-  ```buglang
-  numbers.add(20.1122);
-  ```
+### Dict
 
-### 3. Loops
+```json
+// dictionary yaratish
+users = [
+    { "name": "Samandar", "age": 20, "id": 1 },
+    { "name": "Nomalum", "age": 100, "id": 2 }
+]; 
 
-BugLang provides a `for` loop for iteration. The loop condition is specified without parentheses, and the loop body is executed while the condition is true.
+// yangi element qo'shish
+users[0]["new_item"] = "salom";
 
-- **For Loop**:
+// Element qiymatini olish
+println(users[0]["name"]);
+```
 
-  ```buglang
-  for (i < users.size()) {
-      user = users[i];
-      println("name: ", user["name"]);
-      i = i + 1;
-  }
-  ```
+## Loop
 
-### 4. Built-in Functions
+Faqatgina for loop mavjud boshqa loop yo’q
 
-- `println(...)`: Outputs arguments to the console, with optional concatenation.
+```json
+i = 0;
+for (i < users.size()) {
+    user = users[i];
+    println("name: ", user["name"]);
+    i = i + 1;
+}
+```
 
-- `math.round(number, decimals)`: Rounds a number to the specified decimal places.
+## Funcsiyalar
 
-  ```buglang
-  println(math.round(20.4324, 2)); // Outputs: 20.43
-  ```
+Funcsiya yaratish uchun `func` kalit so’zidan foydalaniladi
 
-### 5. Objects and Dictionaries
+```json
+func getName(){
+	return "Samandar";
+}
+```
 
-BugLang supports dictionary-like objects for key-value pairs, accessible using square bracket notation (`user["key"]`).
+## Classlar
 
-- **Example**:
+Buglangda classlar ham mavjud `class` kalit so’zi yordamida yaratiladi
 
-  ```buglang
-  users = [
-      { "name": "Samandar", "age": 20, "id": 1 },
-      { "name": "Nomalum", "age": 100, "id": 2 }
-  ];
-  ```
+```json
+class ClassName() {
+}
+```
 
-## Example Code
+`Konstructor method` class yaratilganda ishga tushadigan funcsiya `init` nomli funcsiya pythonda o’g’irladim 😁
 
-Below is a complete example demonstrating BugLang's features:
+```json
+class ClassName() {
+    func init() {
+	      this.name = "A";
+	  }
+}
+```
 
-```buglang
-import "math";
+`Desctructor` mavjud emas chunki `garbage collection` ni o’zi yo’q 
 
+### Nasil olish
+
+```json
 // Define class A
 class A() {
     func init() {
@@ -127,76 +140,23 @@ class B() {
 // Define class C inheriting from B and A
 class C(B, A) {
     func init() {
-        super(A).init();
-        println(this.name); // Outputs: A
+        super(A).init(); // super yordamida ota classdagi funcsiyani chaqirish mumkun
+        println(this.name); // Chiqarish: A
         super(B).init();
-        println(this.name); // Outputs: B
+        println(this.name); // Chiqarish: B
         this.name = "C";
     }
     func getName() {
         return this.name;
     }
 }
-
-// Create instance of C
-c = new C();
-println(c.getName()); // Outputs: C
-
-// Array of user objects
-users = [
-    { "name": "Samandar", "age": 20, "id": 1 },
-    { "name": "Nomalum", "age": 100, "id": 2 }
-];
-
-// Iterate over users
-i = 0;
-for (i < users.size()) {
-    user = users[i];
-    println();
-    println("id: ", user["id"]);
-    println("name: ", user["name"]);
-    println("age: ", user["age"]);
-    println();
-    i = i + 1;
-}
-
-// Array of numbers
-numbers = [20.4324, 324.423432, 10.21];
-numbers.add(20.1122);
-
-// Round and print numbers
-i = 0;
-for (i < numbers.size()) {
-    println(math.round(numbers[i], 2));
-    i = i + 1;
-}
 ```
 
-### Output
+## Ichki (built-in) funksiyalar
 
+- `println(...)`: konsolga argumentlarni chiqaradi, bir nechta argumentlarni bo'sh joy bilan birlashtiradi.
+- `math.round(number, decimals)`: sonni ko'rsatilgan onalik (desimal) darajagacha yaxlitlaydi.
+
+```python
+println(math.round(20.4324, 2)); // Chiqarish: 20.43
 ```
-A
-B
-C
-
-id: 1
-name: Samandar
-age: 20
-
-id: 2
-name: Nomalum
-age: 100
-
-20.43
-324.42
-10.21
-20.11
-```
-
-## Contributing
-
-Contributions to BugLang are welcome! Please submit issues or pull requests to the repository (link TBD). Ensure your code follows the language's style and includes tests.
-
-## License
-
-BugLang is licensed under the MIT License. See the LICENSE file for details (to be added).
